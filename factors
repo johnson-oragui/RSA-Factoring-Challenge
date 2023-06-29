@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+import time
 import math
 import sys
 
@@ -27,6 +27,7 @@ def main():
 
     file_path = sys.argv[1]
 
+    start_time = time.time()
     try:
         with open(file_path, 'r') as file:
             numbers = file.readlines()
@@ -39,6 +40,9 @@ def main():
                 print(f"{num} is prime.")
             else:
                 print(f"{num}={factor}*{num // factor}")
+            if time.time() - start_time > 5:
+                print("Time limit exceeded")
+                exit()
     
     except FileNotFoundError:
         print(f"File '{file_path}' not found.")
