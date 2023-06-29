@@ -55,16 +55,17 @@ def main():
             # Read the first line of the file and convert it to an integer
             number = int(file.readline().strip())
         # Factorize the number using Pollard's rho algorithm
-        factor = pollard_rho(number)
+        p = pollard_rho(number)
         # Continue factorizing until a prime factor is found
-        while not is_prime(factor):
-            factor = pollard_rho(factor)
+        while not is_prime(p):
+            p = pollard_rho(p)
+        q = number // p
         # The number is prime
-        if factor == number:
+        if p == number or q == number:
             print(f"{number} is prime.")
         else:
-            # Print the prime factor and the other factor
-            print(f"{number}={number // factor}*{number}")
+            # Print the prime factors
+            print(f"{number}={p}*{q}")
 
         if time.time() - start_time > 5:
             print("Time limit exceeded")
