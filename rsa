@@ -47,8 +47,7 @@ def main():
         if factor == number:
             print(f"{number} is prime.")
         else:
-            print(f"Prime factor found for {number}: {factor}")
-            print(f"Other prime factor: {number // factor}")
+            print(f"{number}={number // factor}*{number}")
     
     except FileNotFoundError:
         print(f"File '{file_path}' not found.")
